@@ -9,14 +9,20 @@
     <title>Index</title>
 </head>
 <body>
-<script src="./dist/bundle.js"></script>
 <div id="app">
-
-    <div>hello world</div>
+    <div id="hello">hello world</div>
     <div class="flex">
         <div>one</div>
         <div>two</div>
     </div>
 </div>
+
+<script>
+  window.onload=function(){
+    document.getElementById("hello").addEventListener("click", function() {
+      console.log("77777");
+    }, true);
+  };
+</script>
 </body>
 </html>
