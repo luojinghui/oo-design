@@ -1,0 +1,101 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+
+    height: 100%;
+}
+header, footer {
+    background-color: #999;
+    text-align: center;
+    padding: 10px;
+    color: #fff;
+}
+header {
+
+}
+footer {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    height: 30px;
+}
+.container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+
+    display: grid;
+    /*   display: inline-grid; */
+
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-gap: 15px 20px;
+
+    grid-template-areas:
+            "m b i t"
+            "m s s s"
+            "m c c c";
+}
+.item-1 {
+    background-color: aquamarine;
+    height: 100vh;
+    left: 0px;
+    grid-area: m;
+
+    position: sticky;
+    top: 0;
+}
+.item-2 {
+    background-color: coral;
+
+    grid-area: b;
+
+    height: 120px;
+    margin-top: 10px;
+}
+.item-3 {
+    background-color: beige;
+
+    grid-area: i;
+
+    height: 120px;
+    margin-top: 10px;
+}
+.item-4 {
+    background-color: darkturquoise;
+
+    grid-area: t;
+    margin-top: 10px;
+}
+.item-5 {
+    background-color: darkgray;
+
+    grid-area: s;
+}
+.item-6 {
+    background-color: darkcyan;
+    grid-area: c;
+    padding-bottom: 50px;
+}
+
+/* =======================================分割线 */
+/* warn against lack of browser support */
+.nope {
+    display: block;
+    color: white;
+    background: orange;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+@supports (display: grid) {
+    .nope {
+        display: none;
+    }
+}

@@ -1,16 +1,23 @@
-$primaryColor: #eee;
-$fontColor: #333;
+//$primaryColor: #fff;
+//$fontColor: #333;
 
 body, html {
-  background-color: $primaryColor;
-  color: $fontColor;
+  //background-color: $primaryColor;
+  //color: $fontColor;
+  
+  background-color: #fff;
+  color: #333;
 
   padding: 0;
   margin: 0;
 }
 
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.wrapper {
+  width: 1200px;
+  height: 100%;
+  background-color: #ddd;
+  
+  display: grid; // 网格布局
+  
 }
+

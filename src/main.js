@@ -3,3 +3,4 @@
  * Author: luojinghui
  */
 import '../assets/css/global.scss';
+import '../assets/font/fonts.css';
