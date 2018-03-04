@@ -6,18 +6,27 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname,'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
       {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: [
+            require.resolve('babel-preset-es2015')
+          ]
+        }
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+          {loader: 'css-loader', options: {importLoaders: 1}},
           'sass-loader',
         ],
       },

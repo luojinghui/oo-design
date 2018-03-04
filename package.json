@@ -4,8 +4,9 @@
   "description": "oo-work",
   "main": "webpack.config.js",
   "scripts": {
-    "dev": "webpack-dev-server --open",
-    "build": "webpack -p"
+    "dev": "webpack-dev-server --inline --hot --mode development",
+    "build": "webpack -p --mode production",
+    "w": "webpack -w --mode development"
   },
   "repository": {
     "type": "git",
