@@ -6,7 +6,7 @@
 
 ;(function () {
   const Utils = {
-    originData: [
+    originData: [ //源数据
       {
         status: "building",
         url: "www.thoughtworks.com",
@@ -30,7 +30,14 @@
         path: "/var/path/project",
         img: "assets/images/debin.png",
         compatible: ["Firfox", "Chrome", "Webpack"]
-      },{
+      }, {
+        status: "idle",
+        url: "www.thoughtworks.com",
+        ip: "192.168.332.22",
+        path: "/var/path/project",
+        img: "assets/images/windows.png",
+        compatible: ["Firfox", "Chrome", "Webpack"]
+      }, {
         status: "idle",
         url: "www.thoughtworks.com",
         ip: "192.168.332.22",
@@ -39,24 +46,43 @@
         compatible: ["Firfox", "Chrome", "Webpack"]
       }
     ],
-    get: () => {
+    get: () => { //获取所有的可用数据
       return Utils.originData;
     },
-    delete: (index, key) => {
+    delete: (index, key) => { //删除数据
       Utils.originData[index].compatible.splice(key, 1);
     },
-    add: (index, value) => {
+    add: (index, value) => { //增加新系统名称
       let data = value.split(",");
       let oldData = Utils.originData[index].compatible;
 
+      data.map((val) => val.replace(/</g, '&lt;').replace(/>/g, '&gt;'));   //过滤字符串特殊字符,防止恶意攻击
+
       Utils.originData[index].compatible = oldData.concat(data);
+    },
+    getStatusNum: () => { //统计不同状态(idle, building)的次数
+      let count = {};
+
+      Utils.originData.forEach((val) => {
+        if (count[val.status]) {
+          count[val.status] += 1;
+        } else {
+          count[val.status] = 1;
+        }
+      });
+
+      return count;
     }
   };
 
   let App = {
     init() {
-      this.data = Utils.get();  //获取原始数据
-      this.index = "";
+      this.state = {
+        index: "",
+        firstIn: true,
+        data: Utils.get()
+      };
+
       this.findDom();   //获取所有Dom
       this.bindEvent();
       this.render();    //初始化渲染
@@ -75,6 +101,9 @@
       this.cancelBox = document.getElementById("cancel-model");
       this.inputSys = document.getElementById("input-sys");
       this.sureBtn = document.getElementById("sure-btn");
+      this.idle = document.getElementById("idle");
+      this.building = document.getElementById("building");
+      this.total = document.getElementById("total");
     },
 
     bindEvent() {
@@ -103,7 +132,7 @@
       let fragment = document.createDocumentFragment();  //减少回流
       fragment = "";
 
-      this.data.map((val, index) => {
+      this.state.data.map((val, index) => {
         let sys = "";
         val.compatible.map((value, key) => {
           sys += `<li class="task-sys-li mr10 flex a-c">
@@ -152,13 +181,22 @@
     },
 
     render() {
+      let {firstIn} = this.state;
       this.view();
+
+      if (firstIn) {
+        let count = Utils.getStatusNum();
+
+        this.building.innerHTML = count.building;
+        this.idle.innerHTML = count.idle;
+        this.total.innerHTML = count.building + count.idle;
+      }
     },
 
     saveSys() {
       let value = this.inputSys.value;
 
-      if(value.trim().length > 0) {
+      if (value.trim().length > 0) {
         Utils.add(this.index, value);
         this.hiddenTModal();
         this.render();

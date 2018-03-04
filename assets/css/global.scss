@@ -1,12 +1,9 @@
-//$primaryColor: #fff;
-//$fontColor: #333;
+$primaryColor: #fff;
+$fontColor: #333;
 
 body, html {
-  //background-color: $primaryColor;
-  //color: $fontColor;
-  
-  background-color: #fff;
-  color: #333;
+  background-color: $primaryColor;
+  color: $fontColor;
 
   padding: 0;
   margin: 0;
@@ -18,6 +15,5 @@ body, html {
   background-color: #ddd;
   
   display: grid; // 网格布局
-  
 }
 
