@@ -30,5 +30,8 @@ yarn build OR npm run build
 ```
 Then use the phone or your computer's browser to open the index.html of your project's root directory.
 
+### Test
+open `test/index.html`
+
 ### Author
 Luojinghui

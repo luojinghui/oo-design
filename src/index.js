@@ -16,51 +16,66 @@
         compatible: ["Firfox", "Chrome"]
       },
       {
-        status: "building",
+        status: "idle",
         url: "www.thoughtworks.com",
         ip: "192.168.332.22",
         path: "/var/path/project",
         img: "assets/images/cent_os.png",
         compatible: ["Firfox", "Chrome"]
-      },
-      {
-        status: "idle",
-        url: "www.thoughtworks.com",
-        ip: "192.168.332.22",
-        path: "/var/path/project",
-        img: "assets/images/debin.png",
-        compatible: ["Firfox", "Chrome", "Webpack"]
-      }, {
-        status: "idle",
-        url: "www.thoughtworks.com",
-        ip: "192.168.332.22",
-        path: "/var/path/project",
-        img: "assets/images/windows.png",
-        compatible: ["Firfox", "Chrome", "Webpack"]
-      }, {
-        status: "idle",
-        url: "www.thoughtworks.com",
-        ip: "192.168.332.22",
-        path: "/var/path/project",
-        img: "assets/images/windows.png",
-        compatible: ["Firfox", "Chrome", "Webpack"]
       }
     ],
-    get: () => { //获取所有的可用数据
+
+    /**
+     @method get
+     *
+     @desc 获取所有的可用数据
+     *
+     @return {Object} 源数据
+     */
+    get: () => {
       return Utils.originData;
     },
-    delete: (index, key) => { //删除数据
-      Utils.originData[index].compatible.splice(key, 1);
+
+    /**
+     @method delete
+     *
+     @desc 删除指定索引的数据
+     *
+     @param {Number} index 删除数据外围索引值
+     @param {Number} key 删除数据索引值
+     *
+     @return {void} 无
+     */
+    delete: (index, key) => {
+      return Utils.originData[index].compatible.splice(key, 1);
     },
+
+    /**
+     @method add
+     *
+     @desc 添加指定索引的数据
+     *
+     @param {Number} index 添加数据索引值
+     @param {String} value 添加的字符串
+     *
+     @return {void} 无
+     */
     add: (index, value) => { //增加新系统名称
       let data = value.split(",");
       let oldData = Utils.originData[index].compatible;
 
       data.map((val) => val.replace(/</g, '&lt;').replace(/>/g, '&gt;'));   //过滤字符串特殊字符,防止恶意攻击
 
-      Utils.originData[index].compatible = oldData.concat(data);
+      return Utils.originData[index].compatible = oldData.concat(data);
     },
-    getStatusNum: () => { //统计不同状态(idle, building)的次数
+    /**
+     @method getStatusNum
+     *
+     @desc 统计不同状态(idle, building)的次数
+     *
+     @return {Object} 返回统计数
+     */
+    getStatusNum: () => {
       let count = {};
 
       Utils.originData.forEach((val) => {
@@ -76,28 +91,29 @@
   };
 
   let App = {
+    /**
+     * 初始化函数,进行绑定事件,渲染页面
+     */
     init() {
       let clientHeight = document.documentElement.clientWidth;
-      let phone = clientHeight <= 1024  ? true : false;
+      let phone = clientHeight <= 1024 ? true : false;
 
       this.state = {
-        index: "",
-        firstIn: true,
-        data: Utils.get(),
-        isPhone: phone
+        index: "",                    //添加的index值
+        firstIn: true,                //页面是否是初次渲染
+        data: Utils.get(),            //获取源数据
+        isPhone: phone                //是否是手机模式
       };
 
-      this.findDom();   //获取所有Dom
-      this.bindEvent();
-      this.render();    //初始化渲染
+      this.findDom();                 //获取所有Dom
+      this.bindEvent();               //绑定监听事件
+      this.render();                  //初始化渲染
     },
 
     findDom() {
       this.content = document.getElementById("task-ul");
       this.building = document.getElementById("building");
       this.idle = document.getElementById("idle");
-      this.trashBox = document.querySelector(".task-sys-li");
-      this.sysList = document.querySelectorAll(".task-li");
       this.addBox = document.getElementById("add-model");
       this.tBox = document.getElementById("transparent-model");
       this.bBox = document.getElementById("b-model");
@@ -113,7 +129,7 @@
     },
 
     bindEvent() {
-      this.eventAdd(this.content, "click", this.remove.bind(this));
+      this.eventAdd(this.content, "click", this.onClick.bind(this));
       this.eventAdd(this.tBox, "click", this.onCancelModel.bind(this));
       this.eventAdd(this.closeBox, "click", this.onCancelModel.bind(this));
       this.eventAdd(this.cancelBox, "click", this.onCancelModel.bind(this));
@@ -123,18 +139,20 @@
     },
 
     eventAdd(dom, type, func) {
-      dom.addEventListener(type, func);
+      dom && dom.addEventListener(type, func);
     },
 
     eventRemove(dom, type, func) {
       dom.removeEventListener(type, func, true);
     },
 
+    //打开蒙版
     onOpenMenu() {
       this.bBox.setAttribute("class", "model b-model");
       this.menu.setAttribute("class", "menu flex j-c-sb f-d-c menu-open");
     },
 
+    //关闭蒙版及弹窗
     onCancelModel() {
       this.inputSys.value = "";
       this.bBox.setAttribute("class", "model b-model none");
@@ -143,6 +161,7 @@
       this.menu.setAttribute("class", "menu flex j-c-sb f-d-c");
     },
 
+    //加载视图
     view() {
       let fragment = document.createDocumentFragment();  //减少回流
       fragment = "";
@@ -192,14 +211,17 @@
 `;
       });
 
-      this.content.innerHTML = fragment;
+      if (this.content) {
+        this.content.innerHTML = fragment;
+      }
     },
 
+    //渲染页面
     render() {
       let {firstIn} = this.state;
       this.view();
 
-      if (firstIn) {
+      if (firstIn && this.building && this.idle && this.total) {
         let count = Utils.getStatusNum();
 
         this.building.innerHTML = count.building;
@@ -208,6 +230,7 @@
       }
     },
 
+    //保存添加,并更新视图
     saveSys() {
       let value = this.inputSys.value;
 
@@ -218,13 +241,14 @@
       }
     },
 
-    add(index, evt) {
+    //设置添加弹窗的弹出位置
+    openAddModel(index, evt) {
       let offetX = evt.target.getBoundingClientRect().x;
       let offetY = evt.target.getBoundingClientRect().y;
 
       this.index = index;
 
-      if(this.state.isPhone) {
+      if (this.state.isPhone) {
         this.bBox.setAttribute("class", "model b-model");
         this.addBox.setAttribute("class", "add-sys-model add-sys-center");
       } else {
@@ -235,7 +259,8 @@
       }
     },
 
-    remove(evt) {
+    //事件代理按类型处理对应的方法
+    onClick(evt) {
       let content = document.getElementById("task-ul");
       let target = evt.target || evt.srcElement;
       let type = "";
@@ -254,7 +279,7 @@
         }
 
         if (type === "add") {
-          this.add(index, evt);
+          this.openAddModel(index, evt);
           break;
         }
 
@@ -264,4 +289,9 @@
   };
 
   App.init();
+
+  //暴露处理数据函数,便于单元测试
+  window.debug = {
+    utils: Utils
+  }
 })();
