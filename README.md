@@ -10,11 +10,6 @@ The following describes the use of the details:
 
 ### Installation
 ##### Installation dependent
-NPM
-```
-npm install
-```
-
 Yarn
 ```
 yarn
@@ -23,10 +18,10 @@ yarn
 ### Development
 Open two iTerms under your project directory
 ```
-yarn w OR npm run w
+yarn w 
 ```
 ```
-yarn dev OR  npm run dev
+yarn dev
 ```
 
 ### Production
