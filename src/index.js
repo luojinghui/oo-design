@@ -161,6 +161,63 @@
       this.menu.setAttribute("class", "menu flex j-c-sb f-d-c");
     },
 
+    //保存添加,并更新视图
+    saveSys() {
+      let value = this.inputSys.value;
+
+      if (value.trim().length > 0) {
+        Utils.add(this.index, value);
+        this.onCancelModel();
+        this.render();
+      }
+    },
+
+    //设置添加弹窗的弹出位置
+    openAddModel(index, evt) {
+      let offetX = evt.target.getBoundingClientRect().x;
+      let offetY = evt.target.getBoundingClientRect().y;
+
+      this.index = index;
+
+      if (this.state.isPhone) {
+        this.bBox.setAttribute("class", "model b-model");
+        this.addBox.setAttribute("class", "add-sys-model add-sys-center");
+      } else {
+        this.tBox.setAttribute("class", "model transparent-model");
+        this.addBox.style.left = offetX - 20 + "px";
+        this.addBox.style.top = offetY + 40 + "px";
+        this.addBox.setAttribute("class", "add-sys-model");
+      }
+    },
+
+    //事件代理按类型处理对应的方法
+    onClick(evt) {
+      let content = document.getElementById("task-ul");
+      let target = evt.target || evt.srcElement;
+      let type = "";
+      let index = "";
+      let key = "";
+
+      while (target !== content) {
+        type = target.getAttribute("data-type");
+        index = target.getAttribute("data-index") || "";
+        key = target.getAttribute("data-key") || "";
+
+        if (type === "delete") {
+          Utils.delete(index, key);
+          this.render();
+          break;
+        }
+
+        if (type === "add") {
+          this.openAddModel(index, evt);
+          break;
+        }
+
+        target = target.parentNode;
+      }
+    },
+
     //加载视图
     view() {
       let fragment = document.createDocumentFragment();  //减少回流
@@ -227,63 +284,6 @@
         this.building.innerHTML = count.building;
         this.idle.innerHTML = count.idle;
         this.total.innerHTML = count.building + count.idle;
-      }
-    },
-
-    //保存添加,并更新视图
-    saveSys() {
-      let value = this.inputSys.value;
-
-      if (value.trim().length > 0) {
-        Utils.add(this.index, value);
-        this.onCancelModel();
-        this.render();
-      }
-    },
-
-    //设置添加弹窗的弹出位置
-    openAddModel(index, evt) {
-      let offetX = evt.target.getBoundingClientRect().x;
-      let offetY = evt.target.getBoundingClientRect().y;
-
-      this.index = index;
-
-      if (this.state.isPhone) {
-        this.bBox.setAttribute("class", "model b-model");
-        this.addBox.setAttribute("class", "add-sys-model add-sys-center");
-      } else {
-        this.tBox.setAttribute("class", "model transparent-model");
-        this.addBox.style.left = offetX - 20 + "px";
-        this.addBox.style.top = offetY + 40 + "px";
-        this.addBox.setAttribute("class", "add-sys-model");
-      }
-    },
-
-    //事件代理按类型处理对应的方法
-    onClick(evt) {
-      let content = document.getElementById("task-ul");
-      let target = evt.target || evt.srcElement;
-      let type = "";
-      let index = "";
-      let key = "";
-
-      while (target !== content) {
-        type = target.getAttribute("data-type");
-        index = target.getAttribute("data-index") || "";
-        key = target.getAttribute("data-key") || "";
-
-        if (type === "delete") {
-          Utils.delete(index, key);
-          this.render();
-          break;
-        }
-
-        if (type === "add") {
-          this.openAddModel(index, evt);
-          break;
-        }
-
-        target = target.parentNode;
       }
     }
   };
