@@ -415,7 +415,7 @@ footer {
     z-index: 100;
 }
 .transparent-model {
-    background-color: rgba(238, 238, 238, 0.2);
+    background-color: rgba(238, 238, 238, 0);
 }
 .b-model {
     background-color: rgba(0,0,0,0.5);
