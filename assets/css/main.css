@@ -1,0 +1,494 @@
+body, html {
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+    background-color: #eee;
+}
+header, footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+}
+header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+
+    box-sizing: border-box;
+    box-shadow: 0px 3px 14px 0px rgba(12, 12, 12, 0.1);
+
+    width: 100%;
+    height: 60px;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    height: 11px;
+    color: #999;
+
+    box-shadow: -4px -2px 14px 0px rgba(12, 12, 12, 0.1);
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    height: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+.content {
+    margin-top: 60px;
+    padding: 15px 0 0px 280px;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 120px);
+
+    grid-gap: 15px 20px;
+}
+
+
+.building, .idle {
+    background-color: #FF9A2A;
+    padding: 20px;
+}
+.idle {
+    background-color: #7FBC39;
+}
+.building .building-up {
+    font-size: 18px;
+}
+.square-font {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    opacity: 0.9;
+}
+.building .square {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.building .square i {
+    font-size: 122px;
+    width: 122px;
+    opacity: 0.2;
+    height: 122px;
+    color: #fff;
+    line-height: 1;
+    display: inline-block;
+
+    animation-name: circle;
+}
+.building .building-num {
+    font-size: 48px;
+    font-weight: 400;
+    text-align: right;
+}
+.idle {
+    ackground-color: #7FBC39;
+}
+
+.preview {
+    background-color: #fff;
+}
+
+.preview .pre-li > div {
+    text-align: center;
+    font-weight: bold;
+
+    height: 50%;
+}
+.pre-font1 {
+    font-size: 12px;
+}
+.pre-font2 {
+    font-size: 20px;
+}
+.pre-ul {
+    height: 100%;
+    padding: 15px;
+}
+
+
+/*tab bar*/
+.tab {
+    height: 50px;
+}
+.tab .tab-li {
+    position: relative;
+
+    cursor: pointer;
+}
+.tab .tab-li strong {
+    width: 96px;
+    height: 100%;
+    border-right: 1px solid #eaeaea;
+
+    text-align: center;
+}
+.tab .tab-li strong.on:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #00b4cf;
+}
+/*END tab bar*/
+
+
+/*search*/
+.search {
+
+}
+.search-input {
+    margin: 0px 20px;
+
+    width: 170px;
+    position: relative;
+    background-color: #f3f3f3;
+}
+.search-input i {
+    font-size: 20px;
+    color: #999;
+    margin-left: 10px;
+}
+.search-input input {
+    padding-left: 10px;
+
+    width: 100%;
+    height: 32px;
+    background-color: #f3f3f3;
+    outline: none;
+}
+/*END search*/
+
+/*switch*/
+.switch-ul {
+    width: 100px;
+    height: 50px;
+}
+.switch-ul .switch-li {
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+}
+.switch-ul .switch-li.on i {
+    color: #00b4cf;
+}
+/*END switch*/
+
+/*task list*/
+.task-ul {
+
+}
+.task-li {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+
+    position: relative;
+}
+.task-li .task-img {
+    width: 75px;
+    height: 75px;
+    margin-right: 30px;
+}
+.task-li .task-img img {
+    width: 100%;
+    height: 100%;
+}
+.task-li .task-info {
+    margin: 0 30px 20px 0;
+    height: 32px;
+}
+.task-li .task-info i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+.task-li .task-info a {
+    color: #03b5d0;
+}
+.task-li .bages {
+    margin: 6px 30px 0 0;
+    padding: 0 10px;
+
+    height: 21px;
+    font-size: 14px;
+    color: #fff;
+}
+.task-operate-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+    background-color: #49b5cf;
+}
+.task-operate-btn:hover,
+.task-add .btn-1:hover,
+.add-sys-model .add-resource-btn:hover {
+    background-color: #337c8e;
+}
+.task-operate-btn i {
+    margin-right: 6px;
+}
+.task-sys-ul {
+
+}
+.task-sys-li {
+    font-size: 16px;
+
+    height: 30px;
+    background-color: #efefef;
+    padding-left: 10px;
+}
+.task-sys-li span {
+
+}
+.task-sys-li i {
+    padding: 7px;
+    cursor: pointer;
+}
+.task-sys-li i:hover {
+    background-color: #ddd;
+}
+/*END task list*/
+
+/*add task*/
+.task-add {
+
+}
+.task-add .btn-1 {
+    background-color: #00b4cf;
+}
+/*END add task*/
+
+
+.tab-box {
+    background-color: #fff;
+
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
+.task-box {
+    background-color: #eee;
+    margin-bottom: 30px;
+
+    grid-column: 1 / 4;
+    grid-row: 3;
+}
+
+
+/*Header模块*/
+.action-menu {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+.action-menu i {
+    font-size: 20px;
+}
+.logo {
+    max-width: 110px;
+    margin-top: 2px;
+}
+.header-detail .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+.header-detail .icon-angle-down {
+    font-size: 16px;
+    color: #999;
+}
+/*END Header模块*/
+
+/*Menu*/
+.menu {
+    background-color: #2d4054;
+
+    width: 260px;
+    height: calc(100% - 90px);
+
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: auto;
+}
+.menu-ul {
+    margin-top: 20px;
+    min-height: 250px;
+}
+.menu-ul .menu-li a {
+    padding-left: 35px;
+
+    height: 45px;
+    color: #ccc;
+
+}
+.menu-li .menu-on {
+    background-color: #435466;
+}
+.menu-li a:hover {
+    background-color: #435466;
+}
+.menu-li a:hover {
+    background-color: #435466;
+}
+.menu-li .menu-on span,
+.menu-li .menu-on i,
+.menu-li a:hover span,
+.menu-li a:hover i{
+    color: #00b4cf;
+}
+.menu-li i {
+    margin-right: 15px;
+
+    height: 23px;
+    line-height: 1;
+
+    font-size: 20px;
+}
+/*END Menu*/
+
+/*Menu History*/
+.history {
+    padding: 0 15px 15px;
+}
+.history h1 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #ccc;
+    margin: 0;
+}
+.history-ul {
+
+}
+.history-ul li {
+    position: relative;
+}
+.history-ul li:after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #999;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+.history-ul li a {
+    padding-left: 15px;
+
+    color: #999;
+    font-size: 12px;
+    display: inline-block;
+}
+.history-ul li a:hover {
+    color: #00B4CF;
+}
+/*END Menu History*/
+
+
+/*Global Model*/
+.model {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+.transparent-model {
+    background-color: rgba(238, 238, 238, 0.2);
+}
+.b-model {
+    background-color: rgba(0,0,0,0.5);
+}
+/*END Global Model*/
+
+/*Add Sys Model*/
+.add-sys-model {
+    position: fixed;
+    top: 200px;
+    left: 600px;
+    z-index: 1000;
+
+    padding: 15px;
+    width: 570px;
+    background-color: #fff;
+    border: 1px solid #49b5cf;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
+.add-sys-model:before {
+    content: "";
+    border-width: 0px 10px 20px 10px;
+    border-color: transparent transparent #49b5cf transparent;
+    border-style: solid;
+    position: absolute;
+    top: -20px;
+}
+.add-sys-model:after {
+    content: "";
+    border-width: 0px 10px 20px 10px;
+    border-color: transparent transparent #fff transparent;
+    border-style: solid;
+    position: absolute;
+    top: -18px;
+}
+.add-sys-model .close-model {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-size: 22px;
+    color: #49b5cf;
+    padding: 10px;
+    cursor: pointer;
+}
+.add-sys-model p {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+.add-sys-model .add-sys-input {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 20px;
+}
+.add-sys-model .add-sys-input input {
+    padding: 0 10px;
+
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #666;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    outline: none;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .2) inset;
+    box-sizing: border-box;
+}
+.add-sys-model .add-resource-btn {
+    background-color: #49b5cf;
+}
+.add-sys-model .cancel-resource-btn {
+    background-color: #435466;
+}
+.add-sys-model .cancel-resource-btn:hover {
+    background-color: #2D4054;
+}
+/*END Add Sys Model*/
