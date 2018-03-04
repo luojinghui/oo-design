@@ -72,18 +72,36 @@
 }
 
 .f-d-r {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
 }
 
 .f-d-c {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
 .flex-wrap {
-  flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .flex-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
 }
 
@@ -96,10 +114,14 @@
 }
 
 .transition2 {
+    -webkit-transition: all ease .2s;
+    -moz-transition: all ease .2s;
     transition: all ease .2s;
 }
 
 .transition3 {
+    -webkit-transition: all ease .3s;
+    -moz-transition: all ease .3s;
     transition: all ease .3s;
 }
 
@@ -113,12 +135,15 @@
 .relative {
     position: relative;
 }
+
 .tc {
     text-align: center;
 }
+
 .mr10 {
     margin-right: 10px;
 }
+
 .btn-1 {
     padding: 0 10px;
 
@@ -126,34 +151,99 @@
     cursor: pointer;
     height: 30px;
     color: #fff;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #999;
+    color: #999;
 }
+
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #999;
+    color: #999;
 }
+
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #999;
+    color: #999;
 }
+
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #999;
+    color: #999;
 }
 
 .animation {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
     animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
     animation-timing-function: linear;
+}
+
+@-webkit-keyframes circle {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes circle {
+    from {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes circle {
     from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
         transform: rotate(0deg);
     }
     to {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
         transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes leftIn {
+    0% {
+        left: -240px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@-moz-keyframes leftIn {
+    0% {
+        left: -240px;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes leftIn {
+    0% {
+        left: -240px;
+    }
+
+    100% {
+        left: 0;
     }
 }

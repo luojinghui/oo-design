@@ -16,7 +16,7 @@
 <div>
     <header class="header">
         <ul class="container flex j-c-sb a-c">
-            <li class="action-menu flex a-c hidden">
+            <li class="action-menu flex a-c" id="open-menu">
                 <i class="cruise icon-navicon"></i>
             </li>
             <li>
@@ -32,7 +32,7 @@
         </ul>
     </header>
     <div class="container">
-        <nav class="menu">
+        <nav class="menu flex j-c-sb f-d-c" id="menu">
             <ul class="menu-ul">
                 <li class="menu-li">
                     <a href="#" title="dashboard" class="flex a-c transition3">
@@ -85,7 +85,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="content">
+        <div class="content transition3">
             <div class="building relative">
                 <h3 class="square-font building-up">Building</h3>
                 <div class="square">
@@ -101,17 +101,15 @@
                 <h1 class="square-font building-num" id="idle">5</h1>
             </div>
             <div class="preview">
-                <ul class="pre-ul flex j-c-sa">
-                    <li class="pre-li flex-1 ">
+                <ul class="pre-ul">
+                    <li class="pre-li flex">
                         <div class="pre-font1">All</div>
-                        <div class="pre-font2" id="total">8</div>
-                    </li>
-                    <li class="pre-li flex-1 ">
                         <div class="pre-font1">PHYSICAL</div>
-                        <div class="pre-font2">4</div>
-                    </li>
-                    <li class="pre-li flex-1 ">
                         <div class="pre-font1">VIRTUAL</div>
+                    </li>
+                    <li class="pre-li flex ">
+                        <div class="pre-font2" id="total">8</div>
+                        <div class="pre-font2">4</div>
                         <div class="pre-font2">4</div>
                     </li>
                 </ul>
@@ -146,88 +144,11 @@
                 </ul>
             </div>
             <div class="task-box">
-                <ul class="task-ul" id="task-ul">
-                    <!--<li class="task-li flex">-->
-                        <!--<div class="task-img">-->
-                            <!--<img src="assets/images/ubuntu.png" alt="ubuntu">-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<div class="flex-l flex flex-wrap">-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-desktop"></i>-->
-                                    <!--<a href="bjmmnggr08.thoughtworks.com" title="url">bjmmnggr08.thoughtworks.com</a>-->
-                                <!--</div>-->
-                                <!--<div class="bages idle flex a-c">idle</div>-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-info"></i>-->
-                                    <!--<span>192.168.32.20</span>-->
-                                <!--</div>-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-folder"></i>-->
-                                    <!--<span>/var/home/project</span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="task-add flex a-c">-->
-                                <!--<div class="btn-1 flex a-c mr10">-->
-                                    <!--<i class="curise icon-plus"></i>-->
-                                <!--</div>-->
-                                <!--<ul class="task-sys-list flex flex-wrap">-->
-                                    <!--<li class="task-sys-li mr10 flex a-c">-->
-                                        <!--<span>Firfox</span>-->
-                                        <!--<i class="curise icon-trash"></i>-->
-                                    <!--</li>-->
-                                    <!--<li class="task-sys-li mr10 flex a-c">-->
-                                        <!--<span>Firfox</span>-->
-                                        <!--<i class="curise icon-trash"></i>-->
-                                    <!--</li>-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="task-operate-btn btn-1 flex a-c transition3">-->
-                            <!--<i class="curise icon-deny"></i>-->
-                            <!--<span>Deny</span>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                    <!--<li class="task-li flex">-->
-                        <!--<div class="task-img">-->
-                            <!--<img src="assets/images/windows.png" alt="window">-->
-                        <!--</div>-->
-                        <!--<div>-->
-                            <!--<div class="flex-l flex flex-wrap">-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-desktop"></i>-->
-                                    <!--<a href="bjmmnggr08.thoughtworks.com" title="url">bjmmnggr08.thoughtworks.com</a>-->
-                                <!--</div>-->
-                                <!--<div class="bages idle flex a-c">idle</div>-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-info"></i>-->
-                                    <!--<span>192.168.32.20</span>-->
-                                <!--</div>-->
-                                <!--<div class="task-info flex a-c">-->
-                                    <!--<i class="curise icon-folder"></i>-->
-                                    <!--<span>/var/home/project</span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="task-add flex a-c">-->
-                                <!--<div class="btn-1 flex a-c">-->
-                                    <!--<i class="curise icon-plus"></i>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="task-operate-btn btn-1 flex a-c transition3">-->
-                            <!--<i class="curise icon-deny"></i>-->
-                            <!--<span>Deny</span>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                </ul>
+                <ul class="task-ul" id="task-ul"></ul>
             </div>
         </div>
     </div>
-    <footer class="flex a-c j-c-c">
+    <footer class="flex a-c j-c-c footer">
         <span>© Copyright 2017 ThoughtWorks</span>
     </footer>
 

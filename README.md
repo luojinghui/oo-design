@@ -2,9 +2,11 @@
 
 ### Introduction
 
-  This project is based on HTML, CSS, JavaScript to achieve a simple version of the background interface. It implements a responsive interface and is compatible with mainstream browsers and mobile devices.
-  Through the use of JavaScript MVC mode to achieve the operating logic of the interface, it has a rapid increase or removal of features. Low coupling.
-  The following describes the use of the details:
+This project is a sample version of the background interface,which is based on HTML,CSS and JAVASCRIPT. It implements devices larger than 700 pixels and is compatible with mainstream browsers.
+
+The project can achieve the operation logic of the interface through the use of JAVASCRIPT MVC mode and it can increase or remove some features rapidly.Low coupling.
+
+The following describes the use of the details:
 
 ### Installation
 ##### Installation dependent

@@ -77,10 +77,14 @@
 
   let App = {
     init() {
+      let clientHeight = document.documentElement.clientWidth;
+      let phone = clientHeight <= 1024  ? true : false;
+
       this.state = {
         index: "",
         firstIn: true,
-        data: Utils.get()
+        data: Utils.get(),
+        isPhone: phone
       };
 
       this.findDom();   //获取所有Dom
@@ -104,14 +108,18 @@
       this.idle = document.getElementById("idle");
       this.building = document.getElementById("building");
       this.total = document.getElementById("total");
+      this.menuAction = document.getElementById("open-menu");
+      this.menu = document.getElementById("menu");
     },
 
     bindEvent() {
       this.eventAdd(this.content, "click", this.remove.bind(this));
-      this.eventAdd(this.tBox, "click", this.hiddenTModal.bind(this));
-      this.eventAdd(this.closeBox, "click", this.hiddenTModal.bind(this));
-      this.eventAdd(this.cancelBox, "click", this.hiddenTModal.bind(this));
+      this.eventAdd(this.tBox, "click", this.onCancelModel.bind(this));
+      this.eventAdd(this.closeBox, "click", this.onCancelModel.bind(this));
+      this.eventAdd(this.cancelBox, "click", this.onCancelModel.bind(this));
       this.eventAdd(this.sureBtn, "click", this.saveSys.bind(this));
+      this.eventAdd(this.menuAction, "click", this.onOpenMenu.bind(this));
+      this.eventAdd(this.bBox, "click", this.onCancelModel.bind(this));
     },
 
     eventAdd(dom, type, func) {
@@ -122,10 +130,17 @@
       dom.removeEventListener(type, func, true);
     },
 
-    hiddenTModal() {
+    onOpenMenu() {
+      this.bBox.setAttribute("class", "model b-model");
+      this.menu.setAttribute("class", "menu flex j-c-sb f-d-c menu-open");
+    },
+
+    onCancelModel() {
       this.inputSys.value = "";
-      this.tBox.setAttribute("class", "model none transparent-model");
+      this.bBox.setAttribute("class", "model b-model none");
+      this.tBox.setAttribute("class", "model transparent-model none");
       this.addBox.setAttribute("class", "add-sys-model none");
+      this.menu.setAttribute("class", "menu flex j-c-sb f-d-c");
     },
 
     view() {
@@ -198,7 +213,7 @@
 
       if (value.trim().length > 0) {
         Utils.add(this.index, value);
-        this.hiddenTModal();
+        this.onCancelModel();
         this.render();
       }
     },
@@ -208,10 +223,16 @@
       let offetY = evt.target.getBoundingClientRect().y;
 
       this.index = index;
-      this.tBox.setAttribute("class", "model transparent-model");
-      this.addBox.style.left = offetX - 20 + "px";
-      this.addBox.style.top = offetY + 40 + "px";
-      this.addBox.setAttribute("class", "add-sys-model");
+
+      if(this.state.isPhone) {
+        this.bBox.setAttribute("class", "model b-model");
+        this.addBox.setAttribute("class", "add-sys-model add-sys-center");
+      } else {
+        this.tBox.setAttribute("class", "model transparent-model");
+        this.addBox.style.left = offetX - 20 + "px";
+        this.addBox.style.top = offetY + 40 + "px";
+        this.addBox.setAttribute("class", "add-sys-model");
+      }
     },
 
     remove(evt) {

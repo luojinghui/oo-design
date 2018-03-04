@@ -5,15 +5,19 @@ body, html {
     height: 100%;
     background-color: #eee;
 }
+
 header, footer {
     text-align: center;
     padding: 10px;
     background-color: #fff;
 }
+
 header {
     position: fixed;
     top: 0;
     z-index: 10;
+
+    -moz-box-sizing: border-box;
 
     box-sizing: border-box;
     box-shadow: 0px 3px 14px 0px rgba(12, 12, 12, 0.1);
@@ -21,6 +25,7 @@ header {
     width: 100%;
     height: 60px;
 }
+
 footer {
     position: fixed;
     bottom: 0;
@@ -31,43 +36,100 @@ footer {
 
     box-shadow: -4px -2px 14px 0px rgba(12, 12, 12, 0.1);
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
 
     height: 100%;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
 }
+
 .content {
     margin-top: 60px;
     padding: 15px 0 0px 280px;
 
+    display: -ms-grid;
+
     display: grid;
 
+    -ms-grid-columns: (1fr) [ 3 ];
     grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (120px) [ 1 ];
     grid-template-rows: repeat(1, 120px);
 
     grid-gap: 15px 20px;
 }
 
+/*Header模块*/
+.action-menu {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
 
+    visibility: hidden;
+}
+
+.action-menu i {
+    font-size: 20px;
+}
+
+.menu-open {
+    -webkit-animation-duration: .5s;
+       -moz-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+       -moz-animation-fill-mode: both;
+            animation-fill-mode: both;
+    -webkit-animation-name: leftIn;
+       -moz-animation-name: leftIn;
+            animation-name: leftIn;
+}
+
+.logo {
+    max-width: 110px;
+    margin-top: 2px;
+}
+
+.header-detail .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.header-detail .icon-angle-down {
+    font-size: 16px;
+    color: #999;
+
+    visibility: hidden;
+}
+
+/*END Header模块*/
+
+/*Top three square*/
 .building, .idle {
     background-color: #FF9A2A;
     padding: 20px;
 }
+
 .idle {
     background-color: #7FBC39;
 }
+
 .building .building-up {
     font-size: 18px;
 }
+
 .square-font {
     margin: 0;
     padding: 0;
     color: #fff;
     opacity: 0.9;
 }
+
 .building .square {
     position: absolute;
     height: 100%;
@@ -76,6 +138,7 @@ footer {
     width: 100%;
     text-align: center;
 }
+
 .building .square i {
     font-size: 122px;
     width: 122px;
@@ -85,15 +148,21 @@ footer {
     line-height: 1;
     display: inline-block;
 
+    -webkit-animation-name: circle;
+
+    -moz-animation-name: circle;
+
     animation-name: circle;
 }
+
 .building .building-num {
     font-size: 48px;
     font-weight: 400;
     text-align: right;
 }
+
 .idle {
-    ackground-color: #7FBC39;
+    background-color: #7FBC39;
 }
 
 .preview {
@@ -103,30 +172,58 @@ footer {
 .preview .pre-li > div {
     text-align: center;
     font-weight: bold;
-
-    height: 50%;
 }
+
 .pre-font1 {
     font-size: 12px;
+
+    -webkit-box-flex: 1;
+
+    -webkit-flex: 1;
+
+       -moz-box-flex: 1;
+
+        -ms-flex: 1;
+
+            flex: 1;
 }
+
 .pre-font2 {
     font-size: 20px;
+
+    -webkit-box-flex: 1;
+
+    -webkit-flex: 1;
+
+       -moz-box-flex: 1;
+
+        -ms-flex: 1;
+
+            flex: 1;
 }
+
 .pre-ul {
     height: 100%;
     padding: 15px;
 }
 
+.pre-ul .pre-li {
+    height: 50%;
+}
 
-/*tab bar*/
+/*Top three square of building*/
+
+/*Tab bar*/
 .tab {
     height: 50px;
 }
+
 .tab .tab-li {
     position: relative;
 
     cursor: pointer;
 }
+
 .tab .tab-li strong {
     width: 96px;
     height: 100%;
@@ -134,6 +231,7 @@ footer {
 
     text-align: center;
 }
+
 .tab .tab-li strong.on:after {
     content: "";
     position: absolute;
@@ -143,25 +241,24 @@ footer {
     height: 3px;
     background-color: #00b4cf;
 }
+
 /*END tab bar*/
 
-
-/*search*/
-.search {
-
-}
+/*Search*/
 .search-input {
-    margin: 0px 20px;
+    margin: 0 20px;
 
     width: 170px;
     position: relative;
     background-color: #f3f3f3;
 }
+
 .search-input i {
     font-size: 20px;
     color: #999;
     margin-left: 10px;
 }
+
 .search-input input {
     padding-left: 10px;
 
@@ -170,6 +267,7 @@ footer {
     background-color: #f3f3f3;
     outline: none;
 }
+
 /*END search*/
 
 /*switch*/
@@ -177,20 +275,21 @@ footer {
     width: 100px;
     height: 50px;
 }
+
 .switch-ul .switch-li {
     height: 100%;
     width: 30px;
     cursor: pointer;
 }
+
 .switch-ul .switch-li.on i {
     color: #00b4cf;
 }
+
 /*END switch*/
 
-/*task list*/
-.task-ul {
+/*Task list*/
 
-}
 .task-li {
     background-color: #fff;
     padding: 15px;
@@ -198,26 +297,32 @@ footer {
 
     position: relative;
 }
+
 .task-li .task-img {
     width: 75px;
     height: 75px;
     margin-right: 30px;
 }
+
 .task-li .task-img img {
     width: 100%;
     height: 100%;
 }
+
 .task-li .task-info {
     margin: 0 30px 20px 0;
     height: 32px;
 }
+
 .task-li .task-info i {
     margin-right: 8px;
     font-size: 16px;
 }
+
 .task-li .task-info a {
     color: #03b5d0;
 }
+
 .task-li .bages {
     margin: 6px 30px 0 0;
     padding: 0 10px;
@@ -226,6 +331,7 @@ footer {
     font-size: 14px;
     color: #fff;
 }
+
 .task-operate-btn {
     position: absolute;
     right: 20px;
@@ -233,17 +339,17 @@ footer {
 
     background-color: #49b5cf;
 }
+
 .task-operate-btn:hover,
 .task-add .btn-1:hover,
 .add-sys-model .add-resource-btn:hover {
     background-color: #337c8e;
 }
+
 .task-operate-btn i {
     margin-right: 6px;
 }
-.task-sys-ul {
 
-}
 .task-sys-li {
     font-size: 16px;
 
@@ -251,27 +357,28 @@ footer {
     background-color: #efefef;
     padding-left: 10px;
 }
-.task-sys-li span {
 
-}
 .task-sys-li i {
     padding: 7px;
     cursor: pointer;
 }
+
 .task-sys-li i:hover {
     background-color: #ddd;
 }
-/*END task list*/
 
-/*add task*/
-.task-add {
+/*END Task list*/
 
-}
+/*Add task*/
 .task-add .btn-1 {
     background-color: #00b4cf;
 }
-/*END add task*/
 
+.task-add .icon-plus {
+    font-size: 18px;
+}
+
+/*END Add task*/
 
 .tab-box {
     background-color: #fff;
@@ -279,58 +386,34 @@ footer {
     grid-column: 1 / 4;
     grid-row: 2 / 3;
 }
+
 .task-box {
     background-color: #eee;
     margin-bottom: 30px;
 
     grid-column: 1 / 4;
+    -ms-grid-row: 3;
     grid-row: 3;
 }
-
-
-/*Header模块*/
-.action-menu {
-    width: 50px;
-    height: 50px;
-    margin-left: 20px;
-}
-.action-menu i {
-    font-size: 20px;
-}
-.logo {
-    max-width: 110px;
-    margin-top: 2px;
-}
-.header-detail .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    margin-right: 10px;
-}
-.header-detail .icon-angle-down {
-    font-size: 16px;
-    color: #999;
-}
-/*END Header模块*/
 
 /*Menu*/
 .menu {
     background-color: #2d4054;
 
     width: 260px;
+    height: -webkit-calc(100% - 90px);
+    height: -moz-calc(100% - 90px);
     height: calc(100% - 90px);
 
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
     overflow: auto;
 }
+
 .menu-ul {
     margin-top: 20px;
     min-height: 250px;
 }
+
 .menu-ul .menu-li a {
     padding-left: 35px;
 
@@ -338,21 +421,26 @@ footer {
     color: #ccc;
 
 }
+
 .menu-li .menu-on {
     background-color: #435466;
 }
+
 .menu-li a:hover {
     background-color: #435466;
 }
+
 .menu-li a:hover {
     background-color: #435466;
 }
+
 .menu-li .menu-on span,
 .menu-li .menu-on i,
 .menu-li a:hover span,
-.menu-li a:hover i{
+.menu-li a:hover i {
     color: #00b4cf;
 }
+
 .menu-li i {
     margin-right: 15px;
 
@@ -361,24 +449,25 @@ footer {
 
     font-size: 20px;
 }
+
 /*END Menu*/
 
 /*Menu History*/
 .history {
     padding: 0 15px 15px;
 }
+
 .history h1 {
     font-size: 24px;
     font-weight: 400;
     color: #ccc;
     margin: 0;
 }
-.history-ul {
 
-}
 .history-ul li {
     position: relative;
 }
+
 .history-ul li:after {
     content: '';
     width: 4px;
@@ -389,6 +478,7 @@ footer {
     left: 0;
     top: 8px;
 }
+
 .history-ul li a {
     padding-left: 15px;
 
@@ -396,11 +486,12 @@ footer {
     font-size: 12px;
     display: inline-block;
 }
+
 .history-ul li a:hover {
     color: #00B4CF;
 }
-/*END Menu History*/
 
+/*END Menu History*/
 
 /*Global Model*/
 .model {
@@ -414,12 +505,15 @@ footer {
     height: 100%;
     z-index: 100;
 }
+
 .transparent-model {
     background-color: rgba(238, 238, 238, 0);
 }
+
 .b-model {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
+
 /*END Global Model*/
 
 /*Add Sys Model*/
@@ -435,6 +529,7 @@ footer {
     border: 1px solid #49b5cf;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
 }
+
 .add-sys-model:before {
     content: "";
     border-width: 0px 10px 20px 10px;
@@ -443,6 +538,7 @@ footer {
     position: absolute;
     top: -20px;
 }
+
 .add-sys-model:after {
     content: "";
     border-width: 0px 10px 20px 10px;
@@ -451,6 +547,7 @@ footer {
     position: absolute;
     top: -18px;
 }
+
 .add-sys-model .close-model {
     position: absolute;
     right: 5px;
@@ -460,15 +557,18 @@ footer {
     padding: 10px;
     cursor: pointer;
 }
+
 .add-sys-model p {
     margin: 0 0 10px 0;
     padding: 0;
 }
+
 .add-sys-model .add-sys-input {
     width: 100%;
     height: 36px;
     margin-bottom: 20px;
 }
+
 .add-sys-model .add-sys-input input {
     padding: 0 10px;
 
@@ -480,15 +580,109 @@ footer {
     border: 1px solid #ddd;
     outline: none;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, .2) inset;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 .add-sys-model .add-resource-btn {
     background-color: #49b5cf;
 }
+
 .add-sys-model .cancel-resource-btn {
     background-color: #435466;
 }
+
 .add-sys-model .cancel-resource-btn:hover {
     background-color: #2D4054;
 }
+
+.add-sys-center {
+    left: -webkit-calc(50% - 300px);
+    left: -moz-calc(50% - 300px);
+    left: calc(50% - 300px);
+    top: 200px;
+}
+
 /*END Add Sys Model*/
+
+/*Media*/
+@media (max-width: 1200px) {
+    .task-li .task-img {
+        display: none;
+    }
+
+    .menu {
+        width: 240px;
+    }
+
+    .header-detail .icon-angle-down {
+        visibility: visible;
+    }
+
+    .content {
+        padding: 15px 15px 0px 250px;
+        grid-gap: 15px 15px;
+    }
+
+    .pre-ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+           -moz-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+    }
+
+    .pre-ul .pre-li {
+        display: block;
+    }
+
+    .pre-ul .pre-li:nth-child(2) {
+        display: block;
+        margin-right: 10px;
+    }
+
+    .pre-ul .pre-font1 {
+        padding: 6px 0;
+        text-align: left !important;
+    }
+
+    .task-li .task-info {
+        margin: 0 15px 20px 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .action-menu {
+        visibility: visible;
+    }
+
+    .footer {
+        display: none !important;
+    }
+
+    .menu {
+        height: 100%;
+        left: -240px;
+        top: 0;
+        z-index: 1000;
+        padding-top: 10px;
+    }
+
+    .content {
+        padding: 15px 15px 0px 15px;
+    }
+
+    .add-sys-model:before,
+    .add-sys-model:after {
+        content: "";
+        margin: 0;
+        border: none;
+    }
+}
+
+/*END Media*/
